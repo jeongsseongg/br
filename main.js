@@ -1,39 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Appraisal Form Submission Handling (Mobile Link Integration)
+    // 1. Appraisal Form Submission Handling
     const appraisalForm = document.getElementById('appraisal-form');
     if (appraisalForm) {
         appraisalForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
             const submitBtn = appraisalForm.querySelector('button');
             const originalText = submitBtn.textContent;
-            
-            // Get Form Data
             const formData = new FormData(appraisalForm);
-            const userName = formData.get('user-name');
-            const userPhone = formData.get('user-phone');
-            const productName = formData.get('product-name');
-            const condition = formData.get('condition');
-
-            // Construct SMS Message
-            const smsMessage = `[뉴욕워치 매입신청]\n이름: ${userName}\n연락처: ${userPhone}\n모델명: ${productName}\n상태: ${condition}`;
+            const smsMessage = `[뉴욕워치 매입신청]\n이름: ${formData.get('user-name')}\n연락처: ${formData.get('user-phone')}\n모델명: ${formData.get('product-name')}\n상태: ${formData.get('condition')}`;
             
             submitBtn.disabled = true;
             submitBtn.textContent = '모바일 연결 중...';
 
-            // 1. First, attempt EmailJS (if configured)
-            if (typeof emailjs !== 'undefined' && emailjs._publicKey && emailjs._publicKey !== "YOUR_PUBLIC_KEY") {
-                emailjs.sendForm('service_hm132d9', 'YOUR_TEMPLATE_ID', appraisalForm);
-            }
-
-            // 2. Main Mobile Link: Open SMS app with pre-filled data
-            // This works perfectly on both iOS and Android
             setTimeout(() => {
-                const smsLink = `sms:01062936668?body=${encodeURIComponent(smsMessage)}`;
-                window.location.href = smsLink;
-                
+                window.location.href = `sms:01062936668?body=${encodeURIComponent(smsMessage)}`;
                 alert('문의 내용이 사장님 문자로 자동 연결됩니다.\n문자 앱이 열리면 [전송] 버튼만 눌러주세요!');
-                
                 appraisalForm.reset();
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalText;
@@ -41,21 +22,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Optimized Visitor Counter
+    // 2. Global-Sync Daily Counter Logic (Starts at 44 every day)
     const counterSpan = document.getElementById('contact-count');
-    let totalCount = parseInt(localStorage.getItem('nyw_total_visitors_global') || '66');
-    let refreshCount = parseInt(sessionStorage.getItem('nyw_refresh_step') || '0');
     
-    refreshCount++;
-    if (refreshCount >= 5) {
-        totalCount++;
-        refreshCount = 0;
-        localStorage.setItem('nyw_total_visitors_global', totalCount);
+    function getDailyCount() {
+        const now = new Date();
+        // Seconds passed since midnight
+        const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const secondsPassed = Math.floor((now - startOfDay) / 1000);
+        
+        // Base 44 + 1 count every 400 seconds (approx 6.6 mins)
+        // This makes the count look natural and synced across all devices
+        const baseCount = 44;
+        const timeIncrement = Math.floor(secondsPassed / 400); 
+        
+        return baseCount + timeIncrement;
     }
-    sessionStorage.setItem('nyw_refresh_step', refreshCount);
-    if (counterSpan) counterSpan.textContent = totalCount;
 
-    // 3. Static Reviews Generation
+    if (counterSpan) {
+        counterSpan.textContent = getDailyCount();
+        // Update live without refresh every minute
+        setInterval(() => {
+            counterSpan.textContent = getDailyCount();
+        }, 60000);
+    }
+
+    // 3. Image Slideshow Logic (Changes every 3 seconds)
+    const slideshowImages = document.querySelectorAll('#slideshow img');
+    let currentImageIndex = 0;
+
+    if (slideshowImages.length > 0) {
+        setInterval(() => {
+            slideshowImages[currentImageIndex].classList.remove('active');
+            currentImageIndex = (currentImageIndex + 1) % slideshowImages.length;
+            slideshowImages[currentImageIndex].classList.add('active');
+        }, 3000);
+    }
+
+    // 4. Static Reviews Generation
     const commentList = document.getElementById('comment-list');
     const todayDisplay = new Date().toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' });
     const mockReviews = [
