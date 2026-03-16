@@ -87,6 +87,34 @@
         .comment-item .content {
             line-height: 1.5;
         }
+
+        /* Location Section Styles */
+        .location-section {
+            width: 100%;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: #111;
+            border-radius: 20px;
+            border: 1px solid #222;
+            color: #fff;
+        }
+        .location-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+        .location-section .address {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: #ccc;
+        }
+        .map-container {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
     </style>
 </head>
 <body>
@@ -143,6 +171,18 @@
         </form>
         <div id="comment-list" class="comment-list">
             <!-- Comments will be loaded here -->
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location-section container">
+        <h3>찾아오시는 길</h3>
+        <p class="address">서울특별시 종로구 창경궁로 109 세운스퀘어</p>
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.339237256242!2d126.99516631189456!3d37.57064227203112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca2e6398935c3%3A0x6b7264858b975003!2z7IS47Jq07Iqk7YCY7Ja0!5e0!3m2!1sko!2skr!4v1710580000000!5m2!1sko!2skr" 
+                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
         </div>
     </section>
 
