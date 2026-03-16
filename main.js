@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Static Reviews Generation (doubled for seamless vertical scroll)
+    // 2. Static Reviews Generation (18 Unique Reviews)
     const commentList = document.getElementById('comment-list');
     const today = new Date().toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' });
 
@@ -30,13 +30,25 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "김*영 고객님", content: "당일 바로 입금해주셔서 급전 필요했는데 큰 도움 됐습니다. 상담도 빠르고 처리도 깔끔해서 대만족입니다." },
         { name: "최*호 고객님", content: "전문가 포스가 느껴지시는 사장님 덕분에 제 시계 가치를 제대로 인정받은 기분입니다. 뉴욕워치 최고예요." },
         { name: "정*우 고객님", content: "지인 추천으로 왔는데 역시 소문대로네요. 여러군데 발품 팔아봤지만 여기가 매입가 제일 높습니다. 강력 추천!" },
-        { name: "윤*지 고객님", content: "상담도 친절하시고 매장 방문했을 때도 기분 좋게 거래했습니다. 입금도 바로 확인해주셔서 신뢰가 가네요." }
+        { name: "윤*지 고객님", content: "상담도 친절하시고 매장 방문했을 때도 기분 좋게 거래했습니다. 입금도 바로 확인해주셔서 신뢰가 가네요." },
+        { name: "강*민 고객님", content: "오래된 오메가 시계라 걱정했는데 생각보다 감정가 높게 나와서 놀랐습니다. 정직한 업체 같아요." },
+        { name: "임*희 고객님", content: "급하게 현금이 필요해서 방문했는데 10분 만에 감정부터 입금까지 끝났어요. 진짜 빠르네요!" },
+        { name: "한*준 고객님", content: "뉴욕워치 사장님 정말 꼼꼼하시네요. 시계 상태 하나하나 설명해주시면서 가격 책정해주셔서 납득이 갔습니다." },
+        { name: "조*현 고객님", content: "까르띠에 발롱블루 팔았는데 다른 곳보다 50만원은 더 받은 것 같아요. 발품 판 보람이 있습니다." },
+        { name: "신*윤 고객님", content: "매장이 고급스럽고 상담도 프라이빗해서 좋았습니다. 소중한 시계 잘 보내준 것 같아 기쁘네요." },
+        { name: "송*호 고객님", content: "IWC 포르투기저 매입 완료! 가격도 좋고 사장님 마인드도 훌륭하십니다. 명품시계 처분은 여기가 답이네요." },
+        { name: "배*성 고객님", content: "택배 매입 이용했는데 불안하지 않게 과정마다 연락주시고 입금도 실물 확인 직후 바로 해주셨어요." },
+        { name: "권*아 고객님", content: "샤넬 J12 판매했습니다. 여성 시계도 전문적으로 잘 봐주시네요. 다음에 또 이용할게요!" },
+        { name: "황*태 고객님", content: "브라이틀링 시계 처분했는데 만족스럽습니다. 주차도 편하고 매장 접근성도 좋네요." },
+        { name: "고*라 고객님", content: "여러 업체 문의해봤는데 뉴욕워치가 답변도 제일 빠르고 매입가도 가장 높았습니다." },
+        { name: "문*빈 고객님", content: "파텍필립 상담받았는데 전문 지식이 대단하시네요. 하이엔드 워치일수록 여기서 팔아야 할 것 같습니다." },
+        { name: "서*재 고객님", content: "거래 과정이 투명해서 좋았습니다. 계약서 작성도 꼼꼼히 해주시고 신뢰가 가는 곳입니다." }
     ];
 
     function renderReviews() {
         if (!commentList) return;
         
-        // Double the content for continuous scrolling effect
+        // Double for seamless infinite scroll
         const doubledReviews = [...mockReviews, ...mockReviews];
         
         commentList.innerHTML = doubledReviews.map(r => `
