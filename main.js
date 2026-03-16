@@ -20,24 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Persistent Visitor Counter logic
+    // 2. Refresh-based Visitor Counter (Increments every time, starting from 66)
     const counterSpan = document.getElementById('contact-count');
-    const todayStr = new Date().toISOString().slice(0, 10); // "YYYY-MM-DD"
     
-    // Total count persistent globally (mocked via localStorage for this demo)
-    let totalCount = parseInt(localStorage.getItem('nyw_total_visitors') || '66');
-    const lastVisitDate = localStorage.getItem('nyw_last_visit_date');
-
-    // If it's a new day, we could reset if desired, but request says "permanent +1 per visit"
-    // and "reset daily to 66". Let's implement:
-    // "Initial 66 + Total unique visits today"
+    // Get the current global count from localStorage, default to 66
+    let totalCount = parseInt(localStorage.getItem('nyw_total_visitors_global') || '66');
     
-    if (lastVisitDate !== todayStr) {
-        // First visit of the day for THIS user
-        totalCount++;
-        localStorage.setItem('nyw_total_visitors', totalCount);
-        localStorage.setItem('nyw_last_visit_date', todayStr);
-    }
+    // Increment on EVERY page load (refresh)
+    totalCount++;
+    localStorage.setItem('nyw_total_visitors_global', totalCount);
 
     if (counterSpan) {
         counterSpan.textContent = totalCount;
