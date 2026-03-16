@@ -3,143 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>럭스워치 (LUXE WATCH) - 명품 시계 최고가 매입</title>
+    <title>리벨류(REVALUE) 스타일 - 명품 최고가 매입</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <div class="logo">LUXE WATCH</div>
-            <ul class="nav-links">
-                <li><a href="#hero">홈</a></li>
-                <li><a href="#process">매입 절차</a></li>
-                <li><a href="#brands">취급 브랜드</a></li>
-                <li><a href="#quote">무료 감정 신청</a></li>
-            </ul>
-            <div class="mobile-menu-btn"><span></span></div>
-        </nav>
+    <!-- Sticky Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">REVALUE <span>STYLE</span></div>
+            <div class="header-right">
+                <a href="tel:010-1234-5678" class="header-btn tel">전화상담</a>
+                <a href="#" class="header-btn kakao">카톡상담</a>
+            </div>
+        </div>
     </header>
 
+    <!-- Hero Section -->
     <section id="hero" class="hero">
-        <div class="hero-overlay"></div>
         <div class="container hero-content">
-            <h1>당신의 명품 시계,<br>최고의 가치로 매입합니다</h1>
-            <p>로렉스, 파텍필립, 오데마피게 등 하이엔드 워치 전문 매입 서비스</p>
+            <div class="badge">오늘의 매입 신청 78건</div>
+            <h1>전국 <span>최고가</span> 명품 매입<br>1분만에 견적 확인</h1>
+            <p>샤넬, 헤르메스, 롤렉스 등 하이엔드 브랜드 전문<br>비대면 퀵 서비스 및 방문 매입 당일 지급</p>
             <div class="hero-btns">
-                <a href="#quote" class="btn btn-primary">지금 감정받기</a>
-                <a href="tel:010-1234-5678" class="btn btn-outline">전화 상담</a>
+                <a href="#quote-form-section" class="btn btn-primary">1분 견적 받기</a>
             </div>
         </div>
     </section>
 
-    <section id="features" class="features container">
-        <div class="feature-card">
-            <div class="icon">💎</div>
-            <h3>정확한 가치 평가</h3>
-            <p>다년간의 경험을 가진 전문가가 시장 시세를 즉시 반영합니다.</p>
+    <!-- Live Ticker -->
+    <div class="ticker-wrapper">
+        <div class="ticker-label">실시간 매입 현황</div>
+        <div class="ticker-content" id="live-ticker">
+            <span class="ticker-item">샤넬 클래식 플랩백 - 980만원 매입 완료 (12분 전)</span>
+            <span class="ticker-item">롤렉스 서브마리너 - 1,450만원 매입 완료 (25분 전)</span>
+            <span class="ticker-item">헤르메스 버킨 30 - 2,100만원 매입 완료 (48분 전)</span>
         </div>
-        <div class="feature-card">
-            <div class="icon">⚡</div>
-            <h3>당일 현금 지급</h3>
-            <p>거래 체결 즉시, 안전하고 신속하게 대금을 지급해 드립니다.</p>
-        </div>
-        <div class="feature-card">
-            <div class="icon">🛡️</div>
-            <h3>철저한 비밀 보장</h3>
-            <p>고객님의 소중한 거래 정보는 100% 안전하게 보호됩니다.</p>
-        </div>
-    </section>
+    </div>
 
-    <section id="process" class="process">
+    <!-- Comparison Section -->
+    <section class="comparison">
         <div class="container">
-            <h2 class="section-title">매입 절차</h2>
-            <div class="steps">
-                <div class="step">
-                    <span class="step-num">01</span>
-                    <h4>온라인/전화 상담</h4>
-                    <p>모델명, 연식, 상태 등을 알려주시면 가견적을 드립니다.</p>
+            <h2 class="section-title">왜 리벨류인가요?</h2>
+            <div class="comparison-grid">
+                <div class="comparison-card revalue">
+                    <h3>리벨류 매입가</h3>
+                    <div class="price">9,500,000원</div>
+                    <ul class="features">
+                        <li>✅ 자체 유통망으로 마진 최소화</li>
+                        <li>✅ 정밀 감정 후 가치 UP 시스템</li>
+                        <li>✅ 당일 즉시 전액 현금 지급</li>
+                    </ul>
                 </div>
-                <div class="step">
-                    <span class="step-num">02</span>
-                    <h4>방문 또는 택배 접수</h4>
-                    <p>매장 방문이나 안전한 택배 서비스를 통해 제품을 접수합니다.</p>
-                </div>
-                <div class="step">
-                    <span class="step-num">03</span>
-                    <h4>정밀 감정 및 최종가 제안</h4>
-                    <p>실물 확인 후 전문 감정사가 최종 매입가를 제안합니다.</p>
-                </div>
-                <div class="step">
-                    <span class="step-num">04</span>
-                    <h4>대금 지급 및 거래 종료</h4>
-                    <p>최종 제안가 승인 시 즉시 대금을 송금해 드립니다.</p>
+                <div class="comparison-card competitor">
+                    <h3>일반 업체 평균</h3>
+                    <div class="price">8,200,000원</div>
+                    <ul class="features">
+                        <li>❌ 위탁 판매 유도로 대금 지연</li>
+                        <li>❌ 불투명한 감정 및 후려치기</li>
+                        <li>❌ 과도한 수수료 차감</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="brands" class="brands container">
-        <h2 class="section-title">취급 브랜드</h2>
-        <div class="brand-grid">
-            <span>ROLEX</span>
-            <span>PATEK PHILIPPE</span>
-            <span>AUDEMARS PIGUET</span>
-            <span>Vacheron Constantin</span>
-            <span>Omega</span>
-            <span>IWC</span>
-            <span>Cartier</span>
-            <span>Hublot</span>
-            <span>Richard Mille</span>
-            <span>Breitling</span>
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">가장 쉽고 빠른 3단계</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-icon">📝</div>
+                    <h4>1. 간편 신청</h4>
+                    <p>사진 3장으로 1분 만에<br>온라인 견적 신청</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">🔍</div>
+                    <h4>2. 정밀 감정</h4>
+                    <p>전문 감정사가 실물 확인 후<br>최종 가치 산출</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">💰</div>
+                    <h4>3. 당일 입금</h4>
+                    <p>최종가 승인 즉시<br>본인 명의 계좌로 송금</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="quote" class="quote-section">
+    <!-- Brands Section -->
+    <section class="brands-section">
         <div class="container">
-            <div class="quote-wrapper">
-                <div class="quote-info">
-                    <h2>무료 감정 신청</h2>
-                    <p>소중한 시계의 가치, 지금 바로 확인하세요.<br>전문 상담원이 30분 이내에 연락드립니다.</p>
-                    <div class="contact-info">
-                        <p>📞 010-1234-5678</p>
-                        <p>💬 카카오톡 ID: LUXEWATCH</p>
-                    </div>
+            <h2 class="section-title">매입 가능 브랜드</h2>
+            <div class="brand-list">
+                <div class="brand-item">CHANEL</div>
+                <div class="brand-item">HERMES</div>
+                <div class="brand-item">ROLEX</div>
+                <div class="brand-item">PATEK PHILIPPE</div>
+                <div class="brand-item">DIOR</div>
+                <div class="brand-item">LOUIS VUITTON</div>
+                <div class="brand-item">GOYARD</div>
+                <div class="brand-item">CELINE</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appraisal Form -->
+    <section id="quote-form-section" class="form-section">
+        <div class="container">
+            <div class="form-box">
+                <div class="form-header">
+                    <h2>지금 바로 시세 확인</h2>
+                    <p>성함과 연락처만 남겨주시면 30분 이내로 연락드립니다.</p>
                 </div>
-                <form id="quote-form" class="quote-form">
-                    <div class="form-group">
-                        <label for="name">성함</label>
-                        <input type="text" id="name" name="name" placeholder="성함을 입력하세요" required>
+                <form id="appraisal-form">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>성함</label>
+                            <input type="text" name="user-name" placeholder="홍길동" required>
+                        </div>
+                        <div class="input-group">
+                            <label>연락처</label>
+                            <input type="tel" name="user-phone" placeholder="010-0000-0000" required>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="phone">연락처</label>
-                        <input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required>
+                    <div class="input-group">
+                        <label>브랜드 및 제품명</label>
+                        <input type="text" name="product-name" placeholder="예: 샤넬 클래식 미디움 블랙 금장" required>
                     </div>
-                    <div class="form-group">
-                        <label for="brand-model">브랜드 및 모델명</label>
-                        <input type="text" id="brand-model" name="brand-model" placeholder="예: 로렉스 서브마리너" required>
+                    <div class="input-group">
+                        <label>제품 상태</label>
+                        <select name="condition">
+                            <option value="new">새제품 (미사용)</option>
+                            <option value="like-new">신품급 (1-2회 사용)</option>
+                            <option value="used">중고 (사용감 있음)</option>
+                        </select>
                     </div>
-                    <div class="form-group">
-                        <label for="details">추가 정보 (연식, 풀구성 여부 등)</label>
-                        <textarea id="details" name="details" placeholder="상세 정보를 입력해 주세요"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary full-width">감정 신청하기</button>
+                    <button type="submit" class="btn btn-accent full-width">무료 견적 신청하기</button>
+                    <p class="form-notice">* 개인정보는 상담 완료 후 즉시 파기됩니다.</p>
                 </form>
             </div>
         </div>
     </section>
 
-    <footer>
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">LUXE WATCH</div>
-                <p>서울 강남구 테헤란로 (방문 전 예약 필수)</p>
-                <p>&copy; 2026 LUXE WATCH. All rights reserved.</p>
+            <div class="footer-top">
+                <div class="footer-logo">REVALUE <span>STYLE</span></div>
+                <div class="footer-contact">
+                    <p>상담시간: 09:00 ~ 21:00 (연중무휴)</p>
+                    <p>대표전화: 010-1234-5678</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 REVALUE STYLE. All rights reserved.</p>
+                <p>서울 강남구 테헤란로 123 | 사업자번호: 123-45-67890</p>
             </div>
         </div>
     </footer>
+
+    <!-- Mobile Sticky Buttons -->
+    <div class="mobile-sticky">
+        <a href="tel:010-1234-5678" class="sticky-btn tel">전화하기</a>
+        <a href="#quote-form-section" class="sticky-btn quote">견적받기</a>
+    </div>
 
     <script src="main.js"></script>
 </body>
