@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Appraisal Form Submission Handling
+    // 1. Appraisal Form Submission Handling (EmailJS integration)
     const appraisalForm = document.getElementById('appraisal-form');
     if (appraisalForm) {
         appraisalForm.addEventListener('submit', (e) => {
@@ -9,8 +9,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const originalText = submitBtn.textContent;
             
             submitBtn.disabled = true;
-            submitBtn.textContent = '견적 산출 중...';
-            
+            submitBtn.textContent = '신청 정보 전송 중...';
+
+            // EmailJS 전송 로직 (사장님 계정 설정 후 작동)
+            // emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', appraisalForm)
+            //     .then(() => {
+            //         alert('감정 신청이 접수되었습니다! 사장님께 즉시 알림이 전송되었습니다.');
+            //         appraisalForm.reset();
+            //     }, (error) => {
+            //         alert('전송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+            //         console.error('EmailJS Error:', error);
+            //     })
+            //     .finally(() => {
+            //         submitBtn.disabled = false;
+            //         submitBtn.textContent = originalText;
+            //     });
+
+            // 데모용 (실제 연동 전까지는 기존 알림 유지)
             setTimeout(() => {
                 alert('감정 신청이 접수되었습니다!\n30분 이내로 전문 상담원이 연락드리겠습니다.');
                 appraisalForm.reset();
@@ -20,32 +35,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Optimized Visitor Counter (Increments every 5 refreshes)
+    // 2. Optimized Visitor Counter
     const counterSpan = document.getElementById('contact-count');
-    
-    // Total count persistent globally, starts from 66
     let totalCount = parseInt(localStorage.getItem('nyw_total_visitors_global') || '66');
-    // Session refresh counter
     let refreshCount = parseInt(sessionStorage.getItem('nyw_refresh_step') || '0');
     
     refreshCount++;
-    
     if (refreshCount >= 5) {
         totalCount++;
-        refreshCount = 0; // Reset step
+        refreshCount = 0;
         localStorage.setItem('nyw_total_visitors_global', totalCount);
     }
-    
     sessionStorage.setItem('nyw_refresh_step', refreshCount);
-
-    if (counterSpan) {
-        counterSpan.textContent = totalCount;
-    }
+    if (counterSpan) counterSpan.textContent = totalCount;
 
     // 3. Static Reviews Generation
     const commentList = document.getElementById('comment-list');
     const todayDisplay = new Date().toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' });
-
     const mockReviews = [
         { name: "이*훈 고객님", content: "로렉스 성골 못해서 처분했는데 사장님이 정말 친절하시고 가격도 타 업체보다 훨씬 잘 쳐주셨어요! 감사합니다." },
         { name: "박*아 고객님", content: "다른데보다 확실히 많이 주시네요. 세운스퀘어 매장도 깔끔하고 전문적인 느낌이라 믿음이 갑니다. 번창하세요!" },
@@ -78,6 +84,5 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `).join('');
     }
-
     renderReviews();
 });

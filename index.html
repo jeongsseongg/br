@@ -517,6 +517,14 @@
         </div>
     </section>
 
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // 여기에 사장님의 Public Key를 입력해야 작동합니다.
+            emailjs.init("YOUR_PUBLIC_KEY"); 
+        })();
+    </script>
     <script src="main.js"></script>
 </body>
 </html>
