@@ -201,18 +201,26 @@
         /* Comment Section Styles */
         .comment-section {
             width: 100%;
-            padding: 60px 0;
+            padding: 80px 0;
             background-color: var(--bg-light);
+        }
+        .reviews-title {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: var(--primary);
+            text-align: center;
+            font-weight: 800;
         }
         .comment-box-wrapper {
             background-color: var(--white);
-            padding: 30px;
-            border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1); /* More distinct shadow */
-            height: 550px;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+            height: 600px;
             overflow: hidden;
             position: relative;
-            border: 2px solid #eee; /* Clear box border */
+            border: 1px solid rgba(0,0,0,0.05);
+            perspective: 1200px; /* 3D Perspective */
         }
         .comment-box-wrapper::before,
         .comment-box-wrapper::after {
@@ -220,8 +228,8 @@
             position: absolute;
             left: 0;
             width: 100%;
-            height: 80px;
-            z-index: 2;
+            height: 120px;
+            z-index: 3;
             pointer-events: none;
         }
         .comment-box-wrapper::before {
@@ -235,37 +243,43 @@
         .comment-list {
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            animation: stepped-scroll-up 24s infinite; /* Slowed down for pauses */
+            gap: 30px;
+            animation: stepped-scroll-up-3d 30s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+            transform-style: preserve-3d;
         }
         .comment-item {
-            padding: 25px;
-            background-color: var(--bg-light);
-            border-radius: 16px;
+            padding: 30px;
+            background-color: var(--white);
+            border-radius: 20px;
             border: 1px solid #eee;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            transition: var(--transition);
-            border-left: 5px solid var(--primary);
-        }
-        .comment-item:hover {
-            transform: scale(1.02);
-            border-color: var(--primary);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+            transition: all 0.5s ease;
+            border-left: 8px solid var(--primary);
+            backface-visibility: hidden;
         }
         
-        /* Stepped Animation (Pauses at each item) */
-        @keyframes stepped-scroll-up {
-            0%, 14% { transform: translateY(0); }
-            16.6%, 30.6% { transform: translateY(-16.66%); }
-            33.3%, 47.3% { transform: translateY(-33.33%); }
-            50%, 64% { transform: translateY(-50%); }
-            66.6%, 80.6% { transform: translateY(-66.66%); }
-            83.3%, 97.3% { transform: translateY(-83.33%); }
-            100% { transform: translateY(-100%); }
+        /* 3D Stepped Animation */
+        @keyframes stepped-scroll-up-3d {
+            0%, 14% { transform: translateY(0) rotateX(0deg) scale(1); }
+            15% { transform: translateY(-16.66%) rotateX(2deg) scale(0.98); }
+            16.6%, 30.6% { transform: translateY(-16.66%) rotateX(0deg) scale(1); }
+            32% { transform: translateY(-33.33%) rotateX(2deg) scale(0.98); }
+            33.3%, 47.3% { transform: translateY(-33.33%) rotateX(0deg) scale(1); }
+            49% { transform: translateY(-50%) rotateX(2deg) scale(0.98); }
+            50%, 64% { transform: translateY(-50%) rotateX(0deg) scale(1); }
+            65.6% { transform: translateY(-66.66%) rotateX(2deg) scale(0.98); }
+            66.6%, 80.6% { transform: translateY(-66.66%) rotateX(0deg) scale(1); }
+            82.3% { transform: translateY(-83.33%) rotateX(2deg) scale(0.98); }
+            83.3%, 97.3% { transform: translateY(-83.33%) rotateX(0deg) scale(1); }
+            99% { transform: translateY(-100%) rotateX(2deg) scale(0.98); }
+            100% { transform: translateY(-100%) rotateX(0deg) scale(1); }
         }
+        
         .comment-item .author {
-            font-weight: 700;
+            font-weight: 800;
             color: var(--primary);
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
         }
         .comment-item .date {
             font-size: 0.8rem;
@@ -388,8 +402,8 @@
     <!-- Comment Section -->
     <section class="comment-section">
         <div class="container">
+            <h3 class="reviews-title">최근 고객 매입 후기</h3>
             <div class="comment-box-wrapper">
-                <h3>최근 고객 매입 후기</h3>
                 <div id="comment-list" class="comment-list">
                     <!-- Reviews will be loaded here via JS -->
                 </div>
