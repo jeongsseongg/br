@@ -20,7 +20,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Static Reviews Generation (18 Unique Reviews)
+    // 2. Click Counter logic (Starts at 92 and increments per click)
+    const counterSpan = document.getElementById('contact-count');
+    let count = parseInt(sessionStorage.getItem('nyw_click_count') || '92');
+    
+    // Initial UI update
+    if (counterSpan) {
+        counterSpan.textContent = count;
+    }
+
+    // Increment count on every click on the document
+    document.addEventListener('click', () => {
+        count++;
+        sessionStorage.setItem('nyw_click_count', count);
+        if (counterSpan) {
+            counterSpan.textContent = count;
+        }
+    });
+
+    // 3. Static Reviews Generation
     const commentList = document.getElementById('comment-list');
     const today = new Date().toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' });
 
@@ -48,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderReviews() {
         if (!commentList) return;
         
-        // Double for seamless infinite scroll
         const doubledReviews = [...mockReviews, ...mockReviews];
         
         commentList.innerHTML = doubledReviews.map(r => `
