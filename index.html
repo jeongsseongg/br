@@ -1,14 +1,146 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>럭스워치 (LUXE WATCH) - 명품 시계 최고가 매입</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+    <header>
+        <nav class="container">
+            <div class="logo">LUXE WATCH</div>
+            <ul class="nav-links">
+                <li><a href="#hero">홈</a></li>
+                <li><a href="#process">매입 절차</a></li>
+                <li><a href="#brands">취급 브랜드</a></li>
+                <li><a href="#quote">무료 감정 신청</a></li>
+            </ul>
+            <div class="mobile-menu-btn"><span></span></div>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1>당신의 명품 시계,<br>최고의 가치로 매입합니다</h1>
+            <p>로렉스, 파텍필립, 오데마피게 등 하이엔드 워치 전문 매입 서비스</p>
+            <div class="hero-btns">
+                <a href="#quote" class="btn btn-primary">지금 감정받기</a>
+                <a href="tel:010-1234-5678" class="btn btn-outline">전화 상담</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features container">
+        <div class="feature-card">
+            <div class="icon">💎</div>
+            <h3>정확한 가치 평가</h3>
+            <p>다년간의 경험을 가진 전문가가 시장 시세를 즉시 반영합니다.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon">⚡</div>
+            <h3>당일 현금 지급</h3>
+            <p>거래 체결 즉시, 안전하고 신속하게 대금을 지급해 드립니다.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon">🛡️</div>
+            <h3>철저한 비밀 보장</h3>
+            <p>고객님의 소중한 거래 정보는 100% 안전하게 보호됩니다.</p>
+        </div>
+    </section>
+
+    <section id="process" class="process">
+        <div class="container">
+            <h2 class="section-title">매입 절차</h2>
+            <div class="steps">
+                <div class="step">
+                    <span class="step-num">01</span>
+                    <h4>온라인/전화 상담</h4>
+                    <p>모델명, 연식, 상태 등을 알려주시면 가견적을 드립니다.</p>
+                </div>
+                <div class="step">
+                    <span class="step-num">02</span>
+                    <h4>방문 또는 택배 접수</h4>
+                    <p>매장 방문이나 안전한 택배 서비스를 통해 제품을 접수합니다.</p>
+                </div>
+                <div class="step">
+                    <span class="step-num">03</span>
+                    <h4>정밀 감정 및 최종가 제안</h4>
+                    <p>실물 확인 후 전문 감정사가 최종 매입가를 제안합니다.</p>
+                </div>
+                <div class="step">
+                    <span class="step-num">04</span>
+                    <h4>대금 지급 및 거래 종료</h4>
+                    <p>최종 제안가 승인 시 즉시 대금을 송금해 드립니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="brands" class="brands container">
+        <h2 class="section-title">취급 브랜드</h2>
+        <div class="brand-grid">
+            <span>ROLEX</span>
+            <span>PATEK PHILIPPE</span>
+            <span>AUDEMARS PIGUET</span>
+            <span>Vacheron Constantin</span>
+            <span>Omega</span>
+            <span>IWC</span>
+            <span>Cartier</span>
+            <span>Hublot</span>
+            <span>Richard Mille</span>
+            <span>Breitling</span>
+        </div>
+    </section>
+
+    <section id="quote" class="quote-section">
+        <div class="container">
+            <div class="quote-wrapper">
+                <div class="quote-info">
+                    <h2>무료 감정 신청</h2>
+                    <p>소중한 시계의 가치, 지금 바로 확인하세요.<br>전문 상담원이 30분 이내에 연락드립니다.</p>
+                    <div class="contact-info">
+                        <p>📞 010-1234-5678</p>
+                        <p>💬 카카오톡 ID: LUXEWATCH</p>
+                    </div>
+                </div>
+                <form id="quote-form" class="quote-form">
+                    <div class="form-group">
+                        <label for="name">성함</label>
+                        <input type="text" id="name" name="name" placeholder="성함을 입력하세요" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">연락처</label>
+                        <input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="brand-model">브랜드 및 모델명</label>
+                        <input type="text" id="brand-model" name="brand-model" placeholder="예: 로렉스 서브마리너" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="details">추가 정보 (연식, 풀구성 여부 등)</label>
+                        <textarea id="details" name="details" placeholder="상세 정보를 입력해 주세요"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width">감정 신청하기</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">LUXE WATCH</div>
+                <p>서울 강남구 테헤란로 (방문 전 예약 필수)</p>
+                <p>&copy; 2026 LUXE WATCH. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>
