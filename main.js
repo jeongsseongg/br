@@ -20,15 +20,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Refresh-based Visitor Counter (Increments every time, starting from 66)
+    // 2. Optimized Visitor Counter (Increments every 5 refreshes)
     const counterSpan = document.getElementById('contact-count');
     
-    // Get the current global count from localStorage, default to 66
+    // Total count persistent globally, starts from 66
     let totalCount = parseInt(localStorage.getItem('nyw_total_visitors_global') || '66');
+    // Session refresh counter
+    let refreshCount = parseInt(sessionStorage.getItem('nyw_refresh_step') || '0');
     
-    // Increment on EVERY page load (refresh)
-    totalCount++;
-    localStorage.setItem('nyw_total_visitors_global', totalCount);
+    refreshCount++;
+    
+    if (refreshCount >= 5) {
+        totalCount++;
+        refreshCount = 0; // Reset step
+        localStorage.setItem('nyw_total_visitors_global', totalCount);
+    }
+    
+    sessionStorage.setItem('nyw_refresh_step', refreshCount);
 
     if (counterSpan) {
         counterSpan.textContent = totalCount;
