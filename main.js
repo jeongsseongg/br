@@ -20,58 +20,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Comment Section Handling
-    const commentForm = document.getElementById('comment-form');
+    // 2. Static Reviews Generation (dated today)
     const commentList = document.getElementById('comment-list');
-    const commentName = document.getElementById('comment-name');
-    const commentContent = document.getElementById('comment-content');
+    const today = new Date().toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' });
 
-    // Load initial comments from localStorage
-    let comments = JSON.parse(localStorage.getItem('br_comments') || '[]');
-    
-    // Function to render comments
-    function renderComments() {
-        if (comments.length === 0) {
-            commentList.innerHTML = '<p style="text-align:center; color:#666;">첫 번째 댓글을 남겨보세요.</p>';
-            return;
+    const mockReviews = [
+        {
+            name: "이*훈 고객님",
+            content: "로렉스 성골 못해서 처분했는데 사장님이 정말 친절하시고 가격도 타 업체보다 훨씬 잘 쳐주셨어요! 감사합니다."
+        },
+        {
+            name: "박*아 고객님",
+            content: "다른데보다 확실히 많이 주시네요. 세운스퀘어 매장도 깔끔하고 전문적인 느낌이라 믿음이 갑니다. 번창하세요!"
+        },
+        {
+            name: "김*영 고객님",
+            content: "당일 바로 입금해주셔서 급전 필요했는데 큰 도움 됐습니다. 상담도 빠르고 처리도 깔끔해서 대만족입니다."
+        },
+        {
+            name: "최*호 고객님",
+            content: "전문가 포스가 느껴지시는 사장님 덕분에 제 시계 가치를 제대로 인정받은 기분입니다. 뉴욕워치 최고예요."
+        },
+        {
+            name: "정*우 고객님",
+            content: "지인 추천으로 왔는데 역시 소문대로네요. 여러군데 발품 팔아봤지만 여기가 매입가 제일 높습니다. 강력 추천!"
+        },
+        {
+            name: "윤*지 고객님",
+            content: "상담도 친절하시고 매장 방문했을 때도 기분 좋게 거래했습니다. 입금도 바로 확인해주셔서 신뢰가 가네요."
         }
+    ];
+
+    function renderReviews() {
+        if (!commentList) return;
         
-        commentList.innerHTML = comments.map(c => `
+        commentList.innerHTML = mockReviews.map(r => `
             <div class="comment-item">
-                <div class="author">${escapeHtml(c.name)}</div>
-                <div class="date">${c.date}</div>
-                <div class="content">${escapeHtml(c.content).replace(/\n/g, '<br>')}</div>
+                <div class="author">${r.name}</div>
+                <div class="date">${today}</div>
+                <div class="content">${r.content}</div>
             </div>
-        `).reverse().join('');
+        `).join('');
     }
 
-    // Function to escape HTML to prevent XSS
-    function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-    }
-
-    // Initial render
-    renderComments();
-
-    // Handle comment submission
-    if (commentForm) {
-        commentForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const newComment = {
-                name: commentName.value,
-                content: commentContent.value,
-                date: new Date().toLocaleString('ko-KR')
-            };
-            
-            comments.push(newComment);
-            localStorage.setItem('br_comments', JSON.stringify(comments));
-            
-            commentName.value = '';
-            commentContent.value = '';
-            renderComments();
-        });
-    }
+    renderReviews();
 });
