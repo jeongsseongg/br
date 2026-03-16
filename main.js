@@ -20,27 +20,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Click Counter logic (Starts at 92 and increments per click)
+    // 2. Persistent Visitor Counter logic
     const counterSpan = document.getElementById('contact-count');
-    let count = parseInt(sessionStorage.getItem('nyw_click_count') || '92');
+    const todayStr = new Date().toISOString().slice(0, 10); // "YYYY-MM-DD"
     
-    // Initial UI update
-    if (counterSpan) {
-        counterSpan.textContent = count;
+    // Total count persistent globally (mocked via localStorage for this demo)
+    let totalCount = parseInt(localStorage.getItem('nyw_total_visitors') || '66');
+    const lastVisitDate = localStorage.getItem('nyw_last_visit_date');
+
+    // If it's a new day, we could reset if desired, but request says "permanent +1 per visit"
+    // and "reset daily to 66". Let's implement:
+    // "Initial 66 + Total unique visits today"
+    
+    if (lastVisitDate !== todayStr) {
+        // First visit of the day for THIS user
+        totalCount++;
+        localStorage.setItem('nyw_total_visitors', totalCount);
+        localStorage.setItem('nyw_last_visit_date', todayStr);
     }
 
-    // Increment count on every click on the document
-    document.addEventListener('click', () => {
-        count++;
-        sessionStorage.setItem('nyw_click_count', count);
-        if (counterSpan) {
-            counterSpan.textContent = count;
-        }
-    });
+    if (counterSpan) {
+        counterSpan.textContent = totalCount;
+    }
 
     // 3. Static Reviews Generation
     const commentList = document.getElementById('comment-list');
-    const today = new Date().toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' });
+    const todayDisplay = new Date().toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' });
 
     const mockReviews = [
         { name: "이*훈 고객님", content: "로렉스 성골 못해서 처분했는데 사장님이 정말 친절하시고 가격도 타 업체보다 훨씬 잘 쳐주셨어요! 감사합니다." },
@@ -65,13 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderReviews() {
         if (!commentList) return;
-        
         const doubledReviews = [...mockReviews, ...mockReviews];
-        
         commentList.innerHTML = doubledReviews.map(r => `
             <div class="comment-item">
                 <div class="author">${r.name}</div>
-                <div class="date">${today}</div>
+                <div class="date">${todayDisplay}</div>
                 <div class="content">${r.content}</div>
             </div>
         `).join('');

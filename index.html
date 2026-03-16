@@ -50,29 +50,33 @@
         }
         .brand-header h1 {
             margin: 0;
-            font-size: 1.8rem;
-            letter-spacing: 2px;
+            font-size: 2.2rem;
+            letter-spacing: 3px;
             font-weight: 800;
         }
 
-        /* Top Counter Bar */
-        .top-counter-bar {
-            width: 100%;
-            background-color: #fce300; /* Yellow point color for attention */
-            color: #000;
-            text-align: center;
-            padding: 10px 0;
-            font-weight: 800;
-            font-size: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 2000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        /* Header Counter Button Style */
+        .header-counter {
+            display: inline-block;
+            margin-top: 15px;
+            background-color: var(--white);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: var(--transition);
         }
-        .top-counter-bar span {
-            color: #d32f2f; /* Red for emphasis */
-            font-size: 1.2rem;
-            margin: 0 2px;
+        .header-counter span {
+            color: #d32f2f;
+            font-size: 1.1rem;
+            margin-left: 2px;
+        }
+        .header-counter:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
 
         /* Appraisal Form Section */
@@ -338,11 +342,11 @@
     </style>
 </head>
 <body>
-    <div class="top-counter-bar">
-        오늘 뉴욕워치에 문의하신 분: <span id="contact-count">92</span>명
-    </div>
     <header class="brand-header">
         <h1>NEW YORK WATCH</h1>
+        <div class="header-counter">
+            오늘 문의 <span id="contact-count">66</span>명
+        </div>
     </header>
 
     <!-- Appraisal Form Section -->
