@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Appraisal Form Submission Handling (EmailJS integration)
+    // 1. Appraisal Form Submission Handling (Mobile Link Integration)
     const appraisalForm = document.getElementById('appraisal-form');
     if (appraisalForm) {
         appraisalForm.addEventListener('submit', (e) => {
@@ -8,23 +8,36 @@ document.addEventListener('DOMContentLoaded', () => {
             const submitBtn = appraisalForm.querySelector('button');
             const originalText = submitBtn.textContent;
             
+            // Get Form Data
+            const formData = new FormData(appraisalForm);
+            const userName = formData.get('user-name');
+            const userPhone = formData.get('user-phone');
+            const productName = formData.get('product-name');
+            const condition = formData.get('condition');
+
+            // Construct SMS Message
+            const smsMessage = `[뉴욕워치 매입신청]\n이름: ${userName}\n연락처: ${userPhone}\n모델명: ${productName}\n상태: ${condition}`;
+            
             submitBtn.disabled = true;
-            submitBtn.textContent = '신청 정보 전송 중...';
+            submitBtn.textContent = '모바일 연결 중...';
 
-            // EmailJS 전송 로직 (Service ID 반영됨)
-            emailjs.sendForm('service_hm132d9', 'YOUR_TEMPLATE_ID', appraisalForm)
-                .then(() => {
-                    alert('감정 신청이 접수되었습니다! 사장님께 즉시 알림이 전송되었습니다.');
-                    appraisalForm.reset();
-                }, (error) => {
-                    alert('전송 중 오류가 발생했습니다. EmailJS 설정을 확인해 주세요.');
-                    console.error('EmailJS Error:', error);
-                })
-                .finally(() => {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = originalText;
-                });
+            // 1. First, attempt EmailJS (if configured)
+            if (typeof emailjs !== 'undefined' && emailjs._publicKey && emailjs._publicKey !== "YOUR_PUBLIC_KEY") {
+                emailjs.sendForm('service_hm132d9', 'YOUR_TEMPLATE_ID', appraisalForm);
+            }
 
+            // 2. Main Mobile Link: Open SMS app with pre-filled data
+            // This works perfectly on both iOS and Android
+            setTimeout(() => {
+                const smsLink = `sms:01062936668?body=${encodeURIComponent(smsMessage)}`;
+                window.location.href = smsLink;
+                
+                alert('문의 내용이 사장님 문자로 자동 연결됩니다.\n문자 앱이 열리면 [전송] 버튼만 눌러주세요!');
+                
+                appraisalForm.reset();
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }, 800);
         });
     }
 
