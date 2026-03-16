@@ -8,136 +8,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #000;
+            margin: 0;
+        }
+        .form-section {
+            padding: 20px;
+            width: 100%;
+        }
+        .form-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
-    <!-- Sticky Header -->
-    <header class="header">
-        <div class="container header-container">
-            <div class="logo">REVALUE <span>STYLE</span></div>
-            <div class="header-right">
-                <a href="tel:010-1234-5678" class="header-btn tel">전화상담</a>
-                <a href="#" class="header-btn kakao">카톡상담</a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center;">
-        <div class="container hero-content">
-            <div class="badge">오늘의 매입 신청 78건</div>
-            <h1>전국 <span class="highlight">최고가</span> 명품 매입<br>1분만에 견적 확인</h1>
-            <p>샤넬, 헤르메스, 롤렉스 등 하이엔드 브랜드 전문<br>비대면 퀵 서비스 및 방문 매입 당일 지급</p>
-            <div class="hero-btns">
-                <a href="#quote-form-section" class="btn btn-primary">1분 견적 받기</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Live Ticker -->
-    <div class="ticker-wrapper">
-        <div class="ticker-label">실시간 매입 현황</div>
-        <div class="ticker-content" id="live-ticker">
-            <!-- JS dynamically populates this -->
-        </div>
-    </div>
-
-    <!-- Specialty Section (New Images) -->
-    <section class="specialty container">
-        <h2 class="section-title">매입 전문 분야</h2>
-        <div class="specialty-grid">
-            <div class="specialty-item">
-                <div class="img-box">
-                    <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=800&q=80" alt="Luxury Watch">
-                </div>
-                <h3>Luxury Watches</h3>
-                <p>로렉스, 파텍필립, 오데마피게 등 전 모델</p>
-            </div>
-            <div class="specialty-item">
-                <div class="img-box">
-                    <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80" alt="Luxury Bag">
-                </div>
-                <h3>Luxury Bags</h3>
-                <p>에르메스, 샤넬, 루이비통 등 하이엔드 백</p>
-            </div>
-            <div class="specialty-item">
-                <div class="img-box">
-                    <img src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&w=800&q=80" alt="High Jewelry">
-                </div>
-                <h3>High Jewelry</h3>
-                <p>까르띠에, 반클리프, 티파니 등 명품 주얼리</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Comparison Section -->
-    <section class="comparison">
-        <div class="container">
-            <h2 class="section-title">왜 리벨류인가요?</h2>
-            <div class="comparison-grid">
-                <div class="comparison-card revalue">
-                    <h3>리벨류 매입가</h3>
-                    <div class="price">9,500,000원</div>
-                    <ul class="features">
-                        <li>✅ 자체 유통망으로 마진 최소화</li>
-                        <li>✅ 정밀 감정 후 가치 UP 시스템</li>
-                        <li>✅ 당일 즉시 전액 현금 지급</li>
-                    </ul>
-                </div>
-                <div class="comparison-card competitor">
-                    <h3>일반 업체 평균</h3>
-                    <div class="price">8,200,000원</div>
-                    <ul class="features">
-                        <li>❌ 위탁 판매 유도로 대금 지연</li>
-                        <li>❌ 불투명한 감정 및 후려치기</li>
-                        <li>❌ 과도한 수수료 차감</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section class="process-section">
-        <div class="container">
-            <h2 class="section-title">가장 쉽고 빠른 3단계</h2>
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-icon">📝</div>
-                    <h4>1. 간편 신청</h4>
-                    <p>사진 3장으로 1분 만에<br>온라인 견적 신청</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-icon">🔍</div>
-                    <h4>2. 정밀 감정</h4>
-                    <p>전문 감정사가 실물 확인 후<br>최종 가치 산출</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-icon">💰</div>
-                    <h4>3. 당일 입금</h4>
-                    <p>최종가 승인 즉시<br>본인 명의 계좌로 송금</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Brands Section -->
-    <section class="brands-section">
-        <div class="container">
-            <h2 class="section-title">매입 가능 브랜드</h2>
-            <div class="brand-list">
-                <div class="brand-item">CHANEL</div>
-                <div class="brand-item">HERMES</div>
-                <div class="brand-item">ROLEX</div>
-                <div class="brand-item">PATEK PHILIPPE</div>
-                <div class="brand-item">DIOR</div>
-                <div class="brand-item">LOUIS VUITTON</div>
-                <div class="brand-item">GOYARD</div>
-                <div class="brand-item">CELINE</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Appraisal Form -->
+    <!-- Appraisal Form Only -->
     <section id="quote-form-section" class="form-section">
         <div class="container">
             <div class="form-wrapper">
@@ -179,29 +70,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-logo">REVALUE <span>STYLE</span></div>
-                <div class="footer-contact">
-                    <p>상담시간: 09:00 ~ 21:00 (연중무휴)</p>
-                    <p>대표전화: 010-1234-5678</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 REVALUE STYLE. All rights reserved.</p>
-                <p>서울 강남구 테헤란로 123 | 사업자번호: 123-45-67890</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Mobile Sticky Buttons -->
-    <div class="mobile-sticky">
-        <a href="tel:010-1234-5678" class="sticky-btn tel">전화하기</a>
-        <a href="#quote-form-section" class="sticky-btn quote">견적받기</a>
-    </div>
 
     <script src="main.js"></script>
 </body>
