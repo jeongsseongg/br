@@ -11,27 +11,20 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = true;
             submitBtn.textContent = '신청 정보 전송 중...';
 
-            // EmailJS 전송 로직 (사장님 계정 설정 후 작동)
-            // emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', appraisalForm)
-            //     .then(() => {
-            //         alert('감정 신청이 접수되었습니다! 사장님께 즉시 알림이 전송되었습니다.');
-            //         appraisalForm.reset();
-            //     }, (error) => {
-            //         alert('전송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
-            //         console.error('EmailJS Error:', error);
-            //     })
-            //     .finally(() => {
-            //         submitBtn.disabled = false;
-            //         submitBtn.textContent = originalText;
-            //     });
+            // EmailJS 전송 로직 (Service ID 반영됨)
+            emailjs.sendForm('service_hm132d9', 'YOUR_TEMPLATE_ID', appraisalForm)
+                .then(() => {
+                    alert('감정 신청이 접수되었습니다! 사장님께 즉시 알림이 전송되었습니다.');
+                    appraisalForm.reset();
+                }, (error) => {
+                    alert('전송 중 오류가 발생했습니다. EmailJS 설정을 확인해 주세요.');
+                    console.error('EmailJS Error:', error);
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                });
 
-            // 데모용 (실제 연동 전까지는 기존 알림 유지)
-            setTimeout(() => {
-                alert('감정 신청이 접수되었습니다!\n30분 이내로 전문 상담원이 연락드리겠습니다.');
-                appraisalForm.reset();
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
-            }, 1500);
         });
     }
 
