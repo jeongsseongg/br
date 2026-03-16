@@ -22,10 +22,10 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="hero" class="hero">
+    <section id="hero" class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center;">
         <div class="container hero-content">
             <div class="badge">오늘의 매입 신청 78건</div>
-            <h1>전국 <span>최고가</span> 명품 매입<br>1분만에 견적 확인</h1>
+            <h1>전국 <span class="highlight">최고가</span> 명품 매입<br>1분만에 견적 확인</h1>
             <p>샤넬, 헤르메스, 롤렉스 등 하이엔드 브랜드 전문<br>비대면 퀵 서비스 및 방문 매입 당일 지급</p>
             <div class="hero-btns">
                 <a href="#quote-form-section" class="btn btn-primary">1분 견적 받기</a>
@@ -37,11 +37,37 @@
     <div class="ticker-wrapper">
         <div class="ticker-label">실시간 매입 현황</div>
         <div class="ticker-content" id="live-ticker">
-            <span class="ticker-item">샤넬 클래식 플랩백 - 980만원 매입 완료 (12분 전)</span>
-            <span class="ticker-item">롤렉스 서브마리너 - 1,450만원 매입 완료 (25분 전)</span>
-            <span class="ticker-item">헤르메스 버킨 30 - 2,100만원 매입 완료 (48분 전)</span>
+            <!-- JS dynamically populates this -->
         </div>
     </div>
+
+    <!-- Specialty Section (New Images) -->
+    <section class="specialty container">
+        <h2 class="section-title">매입 전문 분야</h2>
+        <div class="specialty-grid">
+            <div class="specialty-item">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=800&q=80" alt="Luxury Watch">
+                </div>
+                <h3>Luxury Watches</h3>
+                <p>로렉스, 파텍필립, 오데마피게 등 전 모델</p>
+            </div>
+            <div class="specialty-item">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80" alt="Luxury Bag">
+                </div>
+                <h3>Luxury Bags</h3>
+                <p>에르메스, 샤넬, 루이비통 등 하이엔드 백</p>
+            </div>
+            <div class="specialty-item">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&w=800&q=80" alt="High Jewelry">
+                </div>
+                <h3>High Jewelry</h3>
+                <p>까르띠에, 반클리프, 티파니 등 명품 주얼리</p>
+            </div>
+        </div>
+    </section>
 
     <!-- Comparison Section -->
     <section class="comparison">
@@ -114,37 +140,42 @@
     <!-- Appraisal Form -->
     <section id="quote-form-section" class="form-section">
         <div class="container">
-            <div class="form-box">
-                <div class="form-header">
-                    <h2>지금 바로 시세 확인</h2>
-                    <p>성함과 연락처만 남겨주시면 30분 이내로 연락드립니다.</p>
+            <div class="form-wrapper">
+                <div class="form-image">
+                    <img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=1200&q=80" alt="Appraisal Image">
                 </div>
-                <form id="appraisal-form">
-                    <div class="input-row">
-                        <div class="input-group">
-                            <label>성함</label>
-                            <input type="text" name="user-name" placeholder="홍길동" required>
+                <div class="form-box">
+                    <div class="form-header">
+                        <h2>지금 바로 시세 확인</h2>
+                        <p>성함과 연락처만 남겨주시면 30분 이내로 연락드립니다.</p>
+                    </div>
+                    <form id="appraisal-form">
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>성함</label>
+                                <input type="text" name="user-name" placeholder="홍길동" required>
+                            </div>
+                            <div class="input-group">
+                                <label>연락처</label>
+                                <input type="tel" name="user-phone" placeholder="010-0000-0000" required>
+                            </div>
                         </div>
                         <div class="input-group">
-                            <label>연락처</label>
-                            <input type="tel" name="user-phone" placeholder="010-0000-0000" required>
+                            <label>브랜드 및 제품명</label>
+                            <input type="text" name="product-name" placeholder="예: 샤넬 클래식 미디움 블랙 금장" required>
                         </div>
-                    </div>
-                    <div class="input-group">
-                        <label>브랜드 및 제품명</label>
-                        <input type="text" name="product-name" placeholder="예: 샤넬 클래식 미디움 블랙 금장" required>
-                    </div>
-                    <div class="input-group">
-                        <label>제품 상태</label>
-                        <select name="condition">
-                            <option value="new">새제품 (미사용)</option>
-                            <option value="like-new">신품급 (1-2회 사용)</option>
-                            <option value="used">중고 (사용감 있음)</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-accent full-width">무료 견적 신청하기</button>
-                    <p class="form-notice">* 개인정보는 상담 완료 후 즉시 파기됩니다.</p>
-                </form>
+                        <div class="input-group">
+                            <label>제품 상태</label>
+                            <select name="condition">
+                                <option value="new">새제품 (미사용)</option>
+                                <option value="like-new">신품급 (1-2회 사용)</option>
+                                <option value="used">중고 (사용감 있음)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-accent full-width">무료 견적 신청하기</button>
+                        <p class="form-notice">* 개인정보는 상담 완료 후 즉시 파기됩니다.</p>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
